@@ -36,24 +36,11 @@ public class Tabuleiro {
         return posicoes;
     }
 
-    public PosicaoTabuleiro getPosicao() {
-        Random r = new Random();
-        return getPosicao(r.nextInt(LINHAS.length()), r.nextInt(COLUNAS.length()));
+    public void incQuantidadeNaviosRestantes() {
+        quantidadeNaviosRestantes ++;
     }
 
-    public PosicaoTabuleiro getPosicao(String linha, String coluna) {
-        return getPosicao(LINHAS.indexOf(linha), COLUNAS.indexOf(coluna));
-    }
-
-    private PosicaoTabuleiro getPosicao(int linhaIndex, int colunaIndex) {
-        if (linhaIndex < 0 || colunaIndex < 0) {
-            return null;
-        }
-
-        return posicoes[linhaIndex][colunaIndex];
-    }
-
-    public void setQuantidadeNaviosRestantes(int quantidadeNaviosRestantes) {
-        this.quantidadeNaviosRestantes = quantidadeNaviosRestantes;
+    public void decQuantidadeNaviosRestantes() {
+        quantidadeNaviosRestantes --;
     }
 }
