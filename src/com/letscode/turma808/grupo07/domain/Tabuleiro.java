@@ -1,9 +1,9 @@
 package com.letscode.turma808.grupo07.domain;
 
 public class Tabuleiro {
-    private final int QUANTIDADE_NAVIOS = 10;
-    private final String LINHAS = "ABCDEFGHIJ";
-    private final String COLUNAS = "0123456789";
+    public static final int QUANTIDADE_NAVIOS = 10;
+    public static final String LINHAS = "ABCDEFGHIJ";
+    public static final String COLUNAS = "0123456789";
 
     private PosicaoTabuleiro[][] posicoes;
     private String nomeJogador;
