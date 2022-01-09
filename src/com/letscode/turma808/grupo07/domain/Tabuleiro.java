@@ -11,7 +11,7 @@ public class Tabuleiro {
 
     public Tabuleiro(String nomeJogador) {
         this.nomeJogador = nomeJogador;
-        quantidadeNaviosRestantes = 0;
+        quantidadeNaviosRestantes = 10;
 
         posicoes = new PosicaoTabuleiro[LINHAS.length()][COLUNAS.length()];
 
@@ -20,5 +20,33 @@ public class Tabuleiro {
                 posicoes[i][j] = new PosicaoTabuleiro();
             }
         }
+    }
+
+    public int getQUANTIDADE_NAVIOS() {
+        return QUANTIDADE_NAVIOS;
+    }
+
+    public PosicaoTabuleiro[][] getPosicoes() {
+        return posicoes;
+    }
+
+    public void setPosicoes(PosicaoTabuleiro[][] posicoes) {
+        this.posicoes = posicoes;
+    }
+
+    public String getNomeJogador() {
+        return nomeJogador;
+    }
+
+    public void setNomeJogador(String nomeJogador) {
+        this.nomeJogador = nomeJogador;
+    }
+
+    public int getQuantidadeNaviosRestantes() {
+        return quantidadeNaviosRestantes;
+    }
+
+    public void setQuantidadeNaviosRestantes(int quantidadeNaviosRestantes) {
+        this.quantidadeNaviosRestantes = quantidadeNaviosRestantes;
     }
 }
