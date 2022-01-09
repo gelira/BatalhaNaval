@@ -1,9 +1,11 @@
 package com.letscode.turma808.grupo07.domain;
 
+import java.util.Random;
+
 public class Tabuleiro {
-    private final int QUANTIDADE_NAVIOS = 10;
-    private final String LINHAS = "ABCDEFGHIJ";
-    private final String COLUNAS = "0123456789";
+    public static final int QUANTIDADE_NAVIOS = 10;
+    public static final String LINHAS = "ABCDEFGHIJ";
+    public static final String COLUNAS = "0123456789";
 
     private PosicaoTabuleiro[][] posicoes;
     private String nomeJogador;
@@ -11,7 +13,7 @@ public class Tabuleiro {
 
     public Tabuleiro(String nomeJogador) {
         this.nomeJogador = nomeJogador;
-        quantidadeNaviosRestantes = 10;
+        quantidadeNaviosRestantes = 0;
 
         posicoes = new PosicaoTabuleiro[LINHAS.length()][COLUNAS.length()];
 
@@ -22,28 +24,33 @@ public class Tabuleiro {
         }
     }
 
-    public int getQUANTIDADE_NAVIOS() {
-        return QUANTIDADE_NAVIOS;
+    public String getNomeJogador() {
+        return nomeJogador;
+    }
+
+    public int getQuantidadeNaviosRestantes() {
+        return quantidadeNaviosRestantes;
     }
 
     public PosicaoTabuleiro[][] getPosicoes() {
         return posicoes;
     }
 
-    public void setPosicoes(PosicaoTabuleiro[][] posicoes) {
-        this.posicoes = posicoes;
+    public PosicaoTabuleiro getPosicao() {
+        Random r = new Random();
+        return getPosicao(r.nextInt(LINHAS.length()), r.nextInt(COLUNAS.length()));
     }
 
-    public String getNomeJogador() {
-        return nomeJogador;
+    public PosicaoTabuleiro getPosicao(String linha, String coluna) {
+        return getPosicao(LINHAS.indexOf(linha), COLUNAS.indexOf(coluna));
     }
 
-    public void setNomeJogador(String nomeJogador) {
-        this.nomeJogador = nomeJogador;
-    }
+    private PosicaoTabuleiro getPosicao(int linhaIndex, int colunaIndex) {
+        if (linhaIndex < 0 || colunaIndex < 0) {
+            return null;
+        }
 
-    public int getQuantidadeNaviosRestantes() {
-        return quantidadeNaviosRestantes;
+        return posicoes[linhaIndex][colunaIndex];
     }
 
     public void setQuantidadeNaviosRestantes(int quantidadeNaviosRestantes) {

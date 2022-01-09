@@ -11,24 +11,24 @@ public class PosicaoTabuleiro {
         tiroCerteiro = false;
     }
 
-    public boolean isNavioPosicionado() {
+    public boolean getNavioPosicionado() {
         return navioPosicionado;
+    }
+
+    public boolean getTiro() {
+        return tiro;
+    }
+
+    public boolean getTiroCerteiro() {
+        return tiroCerteiro;
     }
 
     public void setNavioPosicionado(boolean navioPosicionado) {
         this.navioPosicionado = navioPosicionado;
     }
 
-    public boolean isTiro() {
-        return tiro;
-    }
-
     public void setTiro(boolean tiro) {
         this.tiro = tiro;
-    }
-
-    public boolean isTiroCerteiro() {
-        return tiroCerteiro;
     }
 
     public void setTiroCerteiro(boolean tiroCerteiro) {
