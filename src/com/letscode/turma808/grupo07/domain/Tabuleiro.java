@@ -28,6 +28,10 @@ public class Tabuleiro {
         return nomeJogador;
     }
 
+    public void setNomeJogador(String nomeJogador) {
+        this.nomeJogador = nomeJogador;
+    }
+
     public int getQuantidadeNaviosRestantes() {
         return quantidadeNaviosRestantes;
     }

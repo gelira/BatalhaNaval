@@ -9,7 +9,10 @@ public class Main {
 
     public static void main(String[] args) {
         TabuleiroController tc = new TabuleiroController();
-        tc.definirPosicoesNavios();
-        tc.showTabuleiro();
+
+
+
+//        tc.definirPosicoesNavios();
+//        tc.showTabuleiro();
     }
 }

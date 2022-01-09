@@ -2,6 +2,7 @@ package com.letscode.turma808.grupo07.controllers;
 
 import com.letscode.turma808.grupo07.domain.PosicaoTabuleiro;
 import com.letscode.turma808.grupo07.domain.Tabuleiro;
+import com.letscode.turma808.grupo07.views.NomeJogadorView;
 import com.letscode.turma808.grupo07.views.PosicionarNaviosView;
 import com.letscode.turma808.grupo07.views.TabuleiroView;
 
@@ -9,10 +10,15 @@ import javax.sound.midi.ControllerEventListener;
 import java.util.Random;
 
 public class TabuleiroController {
+
     private Tabuleiro tabuleiro;
 
     public TabuleiroController() {
-        tabuleiro = new Tabuleiro("teste");
+
+        String nome = NomeJogadorView.askNomeJogador();
+
+        tabuleiro = new Tabuleiro(nome);
+
     }
 
     public PosicaoTabuleiro getPosicaoRandom() {
@@ -24,6 +30,7 @@ public class TabuleiroController {
         PosicaoTabuleiro[][] posicoes = tabuleiro.getPosicoes();
         return posicoes[linhaIndex][colunaIndex];
     }
+
 
     public void definirPosicoesNavios() {
         PosicionarNaviosView.showDescricao();
@@ -56,7 +63,7 @@ public class TabuleiroController {
 
         }
     }
-
+    
     private PosicaoTabuleiro getPosicaoEscolhida(int linha, int coluna, Tabuleiro tabuleiro){
 
         PosicaoTabuleiro[][] posicoesDoTabuleiro = tabuleiro.getPosicoes();
