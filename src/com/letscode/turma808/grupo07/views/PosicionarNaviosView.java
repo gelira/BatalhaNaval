@@ -13,10 +13,10 @@ public class PosicionarNaviosView {
         System.out.println("A posição escolhida não existe ou já tem um navio nela. Escolha novamente.");
     }
 
-    public static Integer[] askPosicao() {
+    public static Integer[] askPosicao(int posicoesRestantes) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Informe onde quer posicionar o navio: ");
+        System.out.printf("Informe onde quer posicionar o navio (faltam %d navios): ", posicoesRestantes);
         String p = sc.next();
 
         if (p.length() != 2) {
