@@ -2,20 +2,59 @@ package com.letscode.turma808.grupo07.controllers;
 
 import com.letscode.turma808.grupo07.domain.PosicaoTabuleiro;
 import com.letscode.turma808.grupo07.domain.Tabuleiro;
+import com.letscode.turma808.grupo07.views.PosicionarNaviosView;
+import com.letscode.turma808.grupo07.views.TabuleiroView;
 
 import javax.sound.midi.ControllerEventListener;
 import java.util.Random;
 
 public class TabuleiroController {
+    private Tabuleiro tabuleiro;
 
-    private Tabuleiro tabuleiroJogador;
+    public TabuleiroController() {
+        tabuleiro = new Tabuleiro("teste");
+    }
 
-    private Tabuleiro tabuleiroInimigo;
+    public PosicaoTabuleiro getPosicaoRandom() {
+        Random r = new Random();
+        return getPosicao(r.nextInt(Tabuleiro.LINHAS.length()), r.nextInt(Tabuleiro.COLUNAS.length()));
+    }
 
+    private PosicaoTabuleiro getPosicao(int linhaIndex, int colunaIndex) {
+        PosicaoTabuleiro[][] posicoes = tabuleiro.getPosicoes();
+        return posicoes[linhaIndex][colunaIndex];
+    }
 
-    public TabuleiroController(Tabuleiro tabuleiroJogador, Tabuleiro tabuleiroInimigo) {
-        this.tabuleiroJogador = tabuleiroJogador;
-        this.tabuleiroInimigo = tabuleiroInimigo;
+    public void definirPosicoesNavios() {
+        PosicionarNaviosView.showDescricao();
+        int posicoesRestantes;
+
+        while (true) {
+            posicoesRestantes = Tabuleiro.QUANTIDADE_NAVIOS - tabuleiro.getQuantidadeNaviosRestantes();
+            if (posicoesRestantes == 0) {
+                break;
+            }
+
+            Integer[] coordenada = PosicionarNaviosView.askPosicao(posicoesRestantes);
+            Integer linha = coordenada[0];
+            Integer coluna = coordenada[1];
+
+            if (linha == null || coluna == null) {
+                PosicionarNaviosView.showMensagemPosicaoInvalida();
+                continue;
+            }
+
+            PosicaoTabuleiro posicao = getPosicao(linha, coluna);
+
+            if (posicao.getNavioPosicionado()) {
+                PosicionarNaviosView.showMensagemPosicaoInvalida();
+                continue;
+            }
+
+            posicao.setNavioPosicionado(true);
+            tabuleiro.incQuantidadeNaviosRestantes();
+
+        }
     }
 
     private PosicaoTabuleiro getPosicaoEscolhida(int linha, int coluna, Tabuleiro tabuleiro){
@@ -28,7 +67,11 @@ public class TabuleiroController {
 
     }
 
-    private boolean isTiroCerteiro(PosicaoTabuleiro posicaoEscolhida,Tabuleiro tabuleiro){
+    public void showTabuleiro() {
+        TabuleiroView.imprimeTabuleiro(tabuleiro);
+    }
+
+    /*private boolean isTiroCerteiro(PosicaoTabuleiro posicaoEscolhida,Tabuleiro tabuleiro){
 
         if(!posicaoEscolhida.isTiroCerteiro()){
 
@@ -46,9 +89,9 @@ public class TabuleiroController {
 
         return false;
 
-    }
+    }*/
 
-    public char[][] getPosicoesTabuleiro(boolean isJogador){
+    /*public char[][] getPosicoesTabuleiro(boolean isJogador){
 
         PosicaoTabuleiro[][] posicoesTabuleiro;
         if(isJogador){
@@ -78,19 +121,19 @@ public class TabuleiroController {
         return posicoesString;
 
 
-    }
+    }*/
 
-    public int getNumeroDeNaviosRestantes(boolean isJogador){
+    /*public int getNumeroDeNaviosRestantes(boolean isJogador){
         if(isJogador){
             return this.tabuleiroJogador.getQuantidadeNaviosRestantes();
         }else{
             return this.tabuleiroInimigo.getQuantidadeNaviosRestantes();
         }
 
-    }
+    }*/
 
 
-    public void setPosicaoAleatoria(){
+/*    public void setPosicaoAleatoria(){
 
         int linha = ControllerUtils.GerarNumeroAleatorio();
 
@@ -113,9 +156,9 @@ public class TabuleiroController {
         posicaoEscolhida.setNavioPosicionado(true);
 
         return true;
-    }
+    }*/
 
-    public boolean isNavioNaPosicao(char linha, char coluna){
+    /*public boolean isNavioNaPosicao(char linha, char coluna){
 
         int[] posicaoTabuleiro = ControllerUtils.charToInt(linha,coluna);
         PosicaoTabuleiro posicaoAtingida;
@@ -164,7 +207,7 @@ public class TabuleiroController {
 
         return isTiroCerteiro(posicaoEscolhida,this.tabuleiroJogador);
 
-    }
+    }*/
 
 
 
