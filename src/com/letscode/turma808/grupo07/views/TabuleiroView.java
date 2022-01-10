@@ -20,7 +20,7 @@ public class TabuleiroView {
             imprimeLinhaTracejada();
         }
 
-        imprimeNaviosRestantes(tabuleiro.getQuantidadeNaviosRestantes());
+        imprimeRodape(tabuleiro.getQuantidadeNaviosRestantes(), tabuleiro.getQuantidadeTirosCertos());
         imprimeLinhaTracejada();
     }
 
@@ -55,6 +55,15 @@ public class TabuleiroView {
         System.out.println();
     }
 
+    private static void imprimeRodape(int quantidadeNaviosRestantes, int quantidadeTirosCertos) {
+        String naviosRestantes = String.format("Navios restantes: %2d", quantidadeNaviosRestantes);
+        String tirosCertos = String.format("Tiros certos: %2d", quantidadeTirosCertos);
+
+        int quantidadeCaracteresVazios = QUANTIDADE_CARACTERES_LINHA - naviosRestantes.length() - tirosCertos.length();
+
+        System.out.println(naviosRestantes + " ".repeat(quantidadeCaracteresVazios) + tirosCertos);
+    }
+
     private static void imprimeLinhaTabuleiro(char rotulo, PosicaoTabuleiro[] linha) {
         System.out.printf("| %c |", rotulo);
 
@@ -63,10 +72,6 @@ public class TabuleiroView {
         }
 
         System.out.println();
-    }
-
-    private static void imprimeNaviosRestantes(int quantidadeNaviosRestantes) {
-        System.out.printf("Navios restantes: %d%n", quantidadeNaviosRestantes);
     }
 
     private static char avaliarPosicao(PosicaoTabuleiro posicao) {
