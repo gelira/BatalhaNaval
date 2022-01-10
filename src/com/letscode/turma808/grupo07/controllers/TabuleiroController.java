@@ -6,7 +6,6 @@ import com.letscode.turma808.grupo07.views.NomeJogadorView;
 import com.letscode.turma808.grupo07.views.PosicionarNaviosView;
 import com.letscode.turma808.grupo07.views.TabuleiroView;
 
-import javax.sound.midi.ControllerEventListener;
 import java.util.Random;
 
 public class TabuleiroController {
@@ -69,8 +68,23 @@ public class TabuleiroController {
 
             posicao.setNavioPosicionado(true);
             tabuleiro.incQuantidadeNaviosRestantes();
-
         }
+    }
+
+    public void definirPosicoesNaviosAleatoriamente() {
+        PosicaoTabuleiro posicao;
+        int posicoesRestantes;
+
+        do {
+            do {
+                posicao = getPosicao();
+            } while (posicao.getNavioPosicionado());
+
+            posicao.setNavioPosicionado(true);
+            tabuleiro.incQuantidadeNaviosRestantes();
+
+            posicoesRestantes = Tabuleiro.QUANTIDADE_NAVIOS - tabuleiro.getQuantidadeNaviosRestantes();
+        } while (posicoesRestantes > 0);
     }
     
     private PosicaoTabuleiro getPosicaoEscolhida(int linha, int coluna, Tabuleiro tabuleiro){
