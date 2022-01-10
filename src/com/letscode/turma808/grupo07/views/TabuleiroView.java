@@ -95,6 +95,10 @@ public class TabuleiroView {
         return retorno;
     }
 
+    public static void showVitoria(String nomeJogador) {
+        System.out.printf("%s GANHOU!!%n", nomeJogador);
+    }
+
     public static void inicilizaMatriz(){
         for(int l=0;l<10;l++){//preenche as linhas com elementos de 0 a 9//
             for(int c=0;c<10;c++){//preenche as colunas com elementos de 0 a 9//

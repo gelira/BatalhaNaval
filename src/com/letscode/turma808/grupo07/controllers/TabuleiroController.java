@@ -9,7 +9,6 @@ import com.letscode.turma808.grupo07.views.TabuleiroView;
 import java.util.Random;
 
 public class TabuleiroController {
-
     private Tabuleiro tabuleiro;
 
     public TabuleiroController() {
@@ -113,6 +112,15 @@ public class TabuleiroController {
         }
 
         return false;
+    }
+
+    public boolean avaliarVitoria() {
+        if (tabuleiro.getQuantidadeNaviosRestantes() > 0) {
+            return false;
+        }
+
+        TabuleiroView.showVitoria(tabuleiro.getNomeJogador());
+        return true;
     }
 
     /*private boolean isTiroCerteiro(PosicaoTabuleiro posicaoEscolhida,Tabuleiro tabuleiro){
