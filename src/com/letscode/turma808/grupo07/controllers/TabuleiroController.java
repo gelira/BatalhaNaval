@@ -13,11 +13,12 @@ public class TabuleiroController {
     private Tabuleiro tabuleiro;
 
     public TabuleiroController() {
-
         String nome = NomeJogadorView.askNomeJogador();
-
         tabuleiro = new Tabuleiro(nome);
+    }
 
+    public TabuleiroController(String nomeJogador) {
+        tabuleiro = new Tabuleiro(nomeJogador);
     }
 
     private PosicaoTabuleiro getPosicao() {
