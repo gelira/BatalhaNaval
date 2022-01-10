@@ -17,6 +17,30 @@ public class JogoController {
         tabuleiroComputador.definirPosicoesNaviosAleatoriamente();
     }
 
+    public void jogar() {
+        posicionarNavios();
+
+        while (true) {
+            tabuleiroHumano.showTabuleiro();
+            // tabuleiroComputador.showTabuleiro();
+
+            jogadaHumano();
+            if (tabuleiroComputador.avaliarVitoriaOponente()) {
+                tabuleiroHumano.showVitoria();
+                break;
+            }
+
+            jogadaComputador();
+            if (tabuleiroHumano.avaliarVitoriaOponente()) {
+                tabuleiroComputador.showVitoria();
+                break;
+            }
+        }
+
+        tabuleiroHumano.showTabuleiro();
+        tabuleiroComputador.showTabuleiro();
+    }
+
     private void jogadaHumano() {
         Integer[] posicaoJogada;
         Integer linha;
@@ -45,6 +69,7 @@ public class JogoController {
             }
 
             jogada(tabuleiroComputador, posicao);
+            break;
         }
     }
 
