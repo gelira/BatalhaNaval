@@ -4,11 +4,16 @@ public class PosicaoTabuleiro {
     private boolean navioPosicionado;
     private boolean tiro;
     private boolean tiroCerteiro;
+    private int linha;
+    private int coluna;
 
-    public PosicaoTabuleiro() {
+    public PosicaoTabuleiro(int linha, int coluna) {
         navioPosicionado = false;
         tiro = false;
         tiroCerteiro = false;
+
+        this.linha = linha;
+        this.coluna = coluna;
     }
 
     public boolean getNavioPosicionado() {
@@ -21,6 +26,14 @@ public class PosicaoTabuleiro {
 
     public boolean getTiroCerteiro() {
         return tiroCerteiro;
+    }
+
+    public int getLinha() {
+        return linha;
+    }
+
+    public int getColuna() {
+        return coluna;
     }
 
     public void setNavioPosicionado(boolean navioPosicionado) {

@@ -17,9 +17,9 @@ public class Tabuleiro {
 
         posicoes = new PosicaoTabuleiro[LINHAS.length()][COLUNAS.length()];
 
-        for (int i = 0; i < LINHAS.length(); i ++) {
-            for (int j = 0; j < COLUNAS.length(); j ++) {
-                posicoes[i][j] = new PosicaoTabuleiro();
+        for (int linha = 0; linha < LINHAS.length(); linha ++) {
+            for (int coluna = 0; coluna < COLUNAS.length(); coluna ++) {
+                posicoes[linha][coluna] = new PosicaoTabuleiro(linha, coluna);
             }
         }
     }
