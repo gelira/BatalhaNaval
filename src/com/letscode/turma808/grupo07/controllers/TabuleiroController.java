@@ -119,6 +119,10 @@ public class TabuleiroController {
         return tabuleiro.getQuantidadeNaviosRestantes() == 0;
     }
 
+    public void contabilizarTiroCerteiro() {
+        tabuleiro.incQuantidadeTirosCertos();
+    }
+
     public void showVitoria() {
         UtilView.clearScreen();
         TabuleiroView.showVitoria(tabuleiro.getNomeJogador());

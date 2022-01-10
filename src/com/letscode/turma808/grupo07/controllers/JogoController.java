@@ -70,7 +70,7 @@ public class JogoController {
                 continue;
             }
 
-            jogada(tabuleiroComputador, posicao);
+            jogada(tabuleiroHumano, tabuleiroComputador, posicao);
             break;
         }
     }
@@ -82,14 +82,19 @@ public class JogoController {
             posicao = tabuleiroComputador.getPosicao();
         } while (posicao.getTiro());
 
-        jogada(tabuleiroHumano, posicao);
+        jogada(tabuleiroComputador, tabuleiroHumano, posicao);
     }
 
-    private void jogada(TabuleiroController tabuleiroOponente, PosicaoTabuleiro posicao) {
+    private void jogada(
+            TabuleiroController tabuleiroJogador,
+            TabuleiroController tabuleiroOponente,
+            PosicaoTabuleiro posicao
+    ) {
         posicao.setTiro(true);
 
         if (tabuleiroOponente.avaliarTiroCerteiro(posicao.getLinha(), posicao.getColuna())) {
             posicao.setTiroCerteiro(true);
+            tabuleiroJogador.contabilizarTiroCerteiro();
         }
     }
 }
