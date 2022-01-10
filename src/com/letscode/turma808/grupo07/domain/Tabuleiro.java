@@ -10,10 +10,12 @@ public class Tabuleiro {
     private PosicaoTabuleiro[][] posicoes;
     private String nomeJogador;
     private int quantidadeNaviosRestantes;
+    private int quantidadeTirosCertos;
 
     public Tabuleiro(String nomeJogador) {
         this.nomeJogador = nomeJogador;
         quantidadeNaviosRestantes = 0;
+        quantidadeTirosCertos = 0;
 
         posicoes = new PosicaoTabuleiro[LINHAS.length()][COLUNAS.length()];
 
@@ -32,6 +34,10 @@ public class Tabuleiro {
         return quantidadeNaviosRestantes;
     }
 
+    public int getQuantidadeTirosCertos() {
+        return quantidadeTirosCertos;
+    }
+
     public PosicaoTabuleiro[][] getPosicoes() {
         return posicoes;
     }
@@ -42,5 +48,9 @@ public class Tabuleiro {
 
     public void decQuantidadeNaviosRestantes() {
         quantidadeNaviosRestantes --;
+    }
+
+    public void incQuantidadeTirosCertos() {
+        quantidadeTirosCertos ++;
     }
 }
