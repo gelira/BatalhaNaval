@@ -114,13 +114,12 @@ public class TabuleiroController {
         return false;
     }
 
-    public boolean avaliarVitoria() {
-        if (tabuleiro.getQuantidadeNaviosRestantes() > 0) {
-            return false;
-        }
+    public boolean avaliarVitoriaOponente() {
+        return tabuleiro.getQuantidadeNaviosRestantes() == 0;
+    }
 
+    public void showVitoria() {
         TabuleiroView.showVitoria(tabuleiro.getNomeJogador());
-        return true;
     }
 
     /*private boolean isTiroCerteiro(PosicaoTabuleiro posicaoEscolhida,Tabuleiro tabuleiro){
