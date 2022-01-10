@@ -61,7 +61,7 @@ public class JogoController {
     private void jogada(TabuleiroController tabuleiroOponente, PosicaoTabuleiro posicao) {
         posicao.setTiro(true);
 
-        if (tabuleiroOponente.avaliarTiro(posicao.getLinha(), posicao.getColuna())) {
+        if (tabuleiroOponente.avaliarTiroCerteiro(posicao.getLinha(), posicao.getColuna())) {
             posicao.setTiroCerteiro(true);
         }
     }

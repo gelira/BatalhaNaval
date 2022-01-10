@@ -21,12 +21,12 @@ public class TabuleiroController {
         tabuleiro = new Tabuleiro(nomeJogador);
     }
 
-    private PosicaoTabuleiro getPosicao() {
+    public PosicaoTabuleiro getPosicao() {
         Random r = new Random();
         return getPosicao(r.nextInt(Tabuleiro.LINHAS.length()), r.nextInt(Tabuleiro.COLUNAS.length()));
     }
 
-    private PosicaoTabuleiro getPosicao(int linhaIndex, int colunaIndex) {
+    public PosicaoTabuleiro getPosicao(int linhaIndex, int colunaIndex) {
         PosicaoTabuleiro[][] posicoes = tabuleiro.getPosicoes();
         return posicoes[linhaIndex][colunaIndex];
     }
@@ -100,6 +100,19 @@ public class TabuleiroController {
 
     public void showTabuleiro() {
         TabuleiroView.imprimeTabuleiro(tabuleiro);
+    }
+
+    public boolean avaliarTiroCerteiro(int linha, int coluna) {
+        PosicaoTabuleiro posicaoAtirada = getPosicao(linha, coluna);
+
+        if (posicaoAtirada.getNavioPosicionado()) {
+            posicaoAtirada.setNavioPosicionado(false);
+            tabuleiro.decQuantidadeNaviosRestantes();
+
+            return true;
+        }
+
+        return false;
     }
 
     /*private boolean isTiroCerteiro(PosicaoTabuleiro posicaoEscolhida,Tabuleiro tabuleiro){
