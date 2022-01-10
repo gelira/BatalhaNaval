@@ -2,6 +2,7 @@ package com.letscode.turma808.grupo07.controllers;
 
 import com.letscode.turma808.grupo07.domain.PosicaoTabuleiro;
 import com.letscode.turma808.grupo07.views.JogadaView;
+import com.letscode.turma808.grupo07.views.UtilView;
 
 public class JogoController {
     private TabuleiroController tabuleiroHumano;
@@ -21,6 +22,7 @@ public class JogoController {
         posicionarNavios();
 
         while (true) {
+            UtilView.clearScreen();
             tabuleiroHumano.showTabuleiro();
             // tabuleiroComputador.showTabuleiro();
 

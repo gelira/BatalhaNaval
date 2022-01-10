@@ -5,6 +5,7 @@ import com.letscode.turma808.grupo07.domain.Tabuleiro;
 import com.letscode.turma808.grupo07.views.NomeJogadorView;
 import com.letscode.turma808.grupo07.views.PosicionarNaviosView;
 import com.letscode.turma808.grupo07.views.TabuleiroView;
+import com.letscode.turma808.grupo07.views.UtilView;
 
 import java.util.Random;
 
@@ -119,6 +120,7 @@ public class TabuleiroController {
     }
 
     public void showVitoria() {
+        UtilView.clearScreen();
         TabuleiroView.showVitoria(tabuleiro.getNomeJogador());
     }
 }
