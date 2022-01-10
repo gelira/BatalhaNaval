@@ -34,6 +34,9 @@ public class TabuleiroView {
             imprimeLinhaTabuleiro(Tabuleiro.LINHAS.charAt(i), posicoes[i]);
             imprimeLinhaTracejada();
         }
+
+        imprimeNaviosRestantes(tabuleiro.getQuantidadeNaviosRestantes());
+        imprimeLinhaTracejada();
     }
 
     private static void imprimeLinhaTracejada() {
@@ -75,6 +78,10 @@ public class TabuleiroView {
         }
 
         System.out.println();
+    }
+
+    private static void imprimeNaviosRestantes(int quantidadeNaviosRestantes) {
+        System.out.printf("Navios restantes: %d%n", quantidadeNaviosRestantes);
     }
 
     private static char avaliarPosicao(PosicaoTabuleiro posicao) {
