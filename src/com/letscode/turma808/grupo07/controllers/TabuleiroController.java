@@ -21,7 +21,7 @@ public class TabuleiroController {
 
     }
 
-    public PosicaoTabuleiro getPosicaoRandom() {
+    private PosicaoTabuleiro getPosicao() {
         Random r = new Random();
         return getPosicao(r.nextInt(Tabuleiro.LINHAS.length()), r.nextInt(Tabuleiro.COLUNAS.length()));
     }
@@ -43,19 +43,28 @@ public class TabuleiroController {
             }
 
             Integer[] coordenada = PosicionarNaviosView.askPosicao(posicoesRestantes);
-            Integer linha = coordenada[0];
-            Integer coluna = coordenada[1];
-
-            if (linha == null || coluna == null) {
+            if (coordenada == null) {
                 PosicionarNaviosView.showMensagemPosicaoInvalida();
                 continue;
             }
 
-            PosicaoTabuleiro posicao = getPosicao(linha, coluna);
+            Integer linha = coordenada[0];
+            Integer coluna = coordenada[1];
 
-            if (posicao.getNavioPosicionado()) {
-                PosicionarNaviosView.showMensagemPosicaoInvalida();
-                continue;
+            PosicaoTabuleiro posicao;
+
+            if (linha == null || coluna == null) {
+                do {
+                    posicao = getPosicao();
+                } while (posicao.getNavioPosicionado());
+            }
+            else {
+                posicao = getPosicao(linha, coluna);
+
+                if (posicao.getNavioPosicionado()) {
+                    PosicionarNaviosView.showMensagemPosicaoInvalida();
+                    continue;
+                }
             }
 
             posicao.setNavioPosicionado(true);

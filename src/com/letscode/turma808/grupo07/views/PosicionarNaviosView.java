@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class PosicionarNaviosView {
     public static void showDescricao() {
-        System.out.println("As posições devem ser informadas no formato [A-H][0-9].");
+        System.out.println("As posições devem ser informadas como [A-H][0-9]. Informe XX para uma posição aleatória.");
     }
 
     public static void showMensagemPosicaoInvalida() {
@@ -17,9 +17,15 @@ public class PosicionarNaviosView {
         Scanner sc = new Scanner(System.in);
 
         System.out.printf("Informe onde quer posicionar o navio (faltam %d navios): ", posicoesRestantes);
-        String p = sc.next();
+        String p = sc.next().toUpperCase();
 
         if (p.length() != 2) {
+            // Posição inválida
+            return null;
+        }
+
+        if (p.equals("XX")) {
+            // Posição aleatória
             return new Integer[] { null, null };
         }
 
